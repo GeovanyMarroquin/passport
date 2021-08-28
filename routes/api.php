@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\API\V1\AuthController as AuthControllerV1;
 use App\Http\Controllers\API\V1\PostController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +23,7 @@ Route::middleware(['cors', 'json.response'])->group(function () {
         Route::middleware(['auth:api'])->group(function () {
             Route::post('/logout', [AuthControllerV1::class, 'logout']);
             Route::get('/profile', [AuthControllerV1::class, 'profile']);
+            Route::post('/refreshToken', [AuthControllerV1::class, 'refreshToken']);
             Route::apiResource('/post', PostController::class);
         });
     });
